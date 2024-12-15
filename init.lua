@@ -157,6 +157,12 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Add tab 2 spaces
+vim.opt.tabstop = 2 -- Number of spaces a <Tab> character represents
+vim.opt.shiftwidth = 2 -- Number of spaces to use for autoindent
+vim.opt.expandtab = true -- Convert tabs to spaces
+vim.opt.softtabstop = 2 -- Number of spaces inserted when pressing <Tab>
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -205,12 +211,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Set commentstring for terraform
-vim.api.nvim_create_autocmd("FileType", {
-  group = vim.api.nvim_create_augroup("FixTerraformCommentString", { clear = true }),
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('FixTerraformCommentString', { clear = true }),
   callback = function(ev)
-    vim.bo[ev.buf].commentstring = "# %s"
+    vim.bo[ev.buf].commentstring = '# %s'
   end,
-  pattern = { "terraform", "hcl" },
+  pattern = { 'terraform', 'hcl' },
 })
 
 -- [[ Install `lazy.nvim` plugin manager ]]
